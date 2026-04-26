@@ -48,28 +48,3 @@ This project uses [Weights & Biases (WandB)](https://wandb.ai) for experiment tr
 uv run wandb login
 ```
 
-Follow the prompt to paste your API key.
-
-## Using Modal
-
-**Modal is optional for this project. In testing, training was often faster on a local laptop CPU than on Modal, but you can still use Modal if you want a remote training workflow:**
-
-First, create a Modal account. Then, you can launch remote training with the following command:
-
-```bash
-uv run modal run src/push_t_imitation/modal_train.py
-```
-
-This will build a Modal container and launch training remotely. You can pass the same flags as the local training script. If you are logged into WandB locally, your API key will be automatically forwarded to the Modal container.
-
-Logs and checkpoints will be saved to a Modal volume called `push_t_imitation_volume`. To inspect the logs, you can use:
-
-```bash
-uv run modal volume ls push_t_imitation_volume exp
-```
-
-Then, you can download the logs and checkpoints to your local machine using a command like the following:
-
-```bash
-uv run modal volume get push_t_imitation_volume exp/<experiment_name>
-```

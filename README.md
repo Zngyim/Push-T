@@ -1,4 +1,16 @@
-# Homework 1: Imitation Learning
+# Push-T Imitation Learning
+
+## 成果展示
+
+### Behavior Cloning
+
+![demo_bc](demo_bc.gif)
+
+### Flow Matching
+
+![demo_fm](demo_fm.gif)
+
+
 
 ## Setup
 
@@ -23,14 +35,14 @@ and environments are handled automatically. If you want to add a new dependency,
 Example:
 
 ```bash
-uv run src/hw1_imitation/train.py --help
+uv run src/push_t_imitation/train.py --help
 ```
 
-This should work out of the box with the provided starter code.
+This should work out of the box with the current codebase.
 
 ## Weights & Biases (wandb) login
 
-These assignments use [Weights & Biases (WandB)](https://wandb.ai) for experiment tracking. WandB is a tool for logging and visualizing machine learning experiments. It is free for academic use. Before running a training script, you will need to log in to WandB using your API key.
+This project uses [Weights & Biases (WandB)](https://wandb.ai) for experiment tracking. WandB is a tool for logging and visualizing machine learning experiments. It is free for academic use. Before running a training script, you will need to log in to WandB using your API key.
 
 ```bash
 uv run wandb login
@@ -40,24 +52,24 @@ Follow the prompt to paste your API key.
 
 ## Using Modal
 
-**Note that Modal is likely not necessary for this assignment. In testing, training was much faster on a local laptop CPU than on Modal. However, you may need to use Modal in future assignments, so if you want to get set up, here are the instructions:**
+**Modal is optional for this project. In testing, training was often faster on a local laptop CPU than on Modal, but you can still use Modal if you want a remote training workflow:**
 
-First, create a Modal account. You should recieve $30 in free credits, which will be plenty for this assignment. Then, you can train on Modal with the following command:
+First, create a Modal account. Then, you can launch remote training with the following command:
 
 ```bash
-uv run modal run src/hw1_imitation/modal_train.py
+uv run modal run src/push_t_imitation/modal_train.py
 ```
 
 This will build a Modal container and launch training remotely. You can pass the same flags as the local training script. If you are logged into WandB locally, your API key will be automatically forwarded to the Modal container.
 
-Logs and checkpoints will be saved to a Modal volume called `hw1-imitation-volume`. To inspect the logs, you can use:
+Logs and checkpoints will be saved to a Modal volume called `push_t_imitation_volume`. To inspect the logs, you can use:
 
 ```bash
-uv run modal volume ls hw1-imitation-volume exp
+uv run modal volume ls push_t_imitation_volume exp
 ```
 
 Then, you can download the logs and checkpoints to your local machine using a command like the following:
 
 ```bash
-uv run modal volume get hw1-imitation-volume exp/<experiment_name>
+uv run modal volume get push_t_imitation_volume exp/<experiment_name>
 ```
